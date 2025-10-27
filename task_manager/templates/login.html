@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Вход</h1>
+<form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label for="{{ form.username.id_for_label }}">Имя пользователя</label>
+        {{ form.username }}
+        {% for error in form.username.errors %}
+            <div class="alert alert-danger mt-1">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="{{ form.password.id_for_label }}">Пароль</label>
+        {{ form.password }}
+        {% for error in form.password.errors %}
+            <div class="alert alert-danger mt-1">{{ error }}</div>
+        {% endfor %}
+    </div>
+
+    <button type="submit" class="btn btn-success">Войти</button>
+</form>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Task List{% endblock %}
+
+{% block content %}
+<h1>Задачи</h1>
+<a href="{% url 'task_create' %}" class="btn btn-primary mb-3">Создать задачу</a>
+<div class="card-body bg-light mb-3">
+    <form method="get">
+        <div class="row g-3 align-items-center">
+        <div class="col-md-3">
+            <div class="col-md-3 mb-3">
+                {{ filter.form.status.label_tag }}
+                {{ filter.form.status }}
+            </div>
+            <div class="col-md-3 mb-3">
+                {{ filter.form.executor.label_tag }}
+                {{ filter.form.executor }}
+            </div>
+            <div class="col-md-3 mb-3">
+                {{ filter.form.label.label_tag }}
+                {{ filter.form.label }}
+            </div>
+            </div>
+        </div>
+        <div class="col-md-2 mt-4">
+            {{ filter.form.self_tasks.label_tag }}
+            {{ filter.form.self_tasks }}
+        </div>
+        <div class="col-md-1 mt-4">
+            <button type="submit" class="btn btn-primary">Показать</button>
+        </div>
+    </form>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Статус</th>
+            <th>Автор</th>
+            <th>Исполнитель</th>
+            <th>Дата создания</th>
+            <th>Кнопочки</th>
+        </tr>
+    </thead>
+    {% if task_list %}
+    <tbody>
+        {% for task in task_list %}
+            <tr>
+                <td>{{ task.id }}</td>
+                <td><a href="{% url 'task_detail' task.id%}">{{ task.name }}</a></td>
+                <td>{{ task.status }}</td>
+                <td>{{ task.author.first_name }} {{ task.author.last_name }}</td>
+                <td>{{ task.executor.first_name }} {{ task.executor.last_name }}</td>
+                <td>{{ task.created_at }}</td>
+                <td>
+                    <a href="{% url 'task_update' task.id %}" class="btn btn-warning">Изменить</a>
+                    <a href="{% url 'task_delete' task.id %}" class="btn btn-danger">Удалить</a>
+                </td>
+            </tr>
+        {% empty %} 
+            <p>No statuses available.</p>
+        {% endfor %}
+    </tbody>
+    {% endif %}
+</table>
+{% endblock %}

@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'task_manager',
-    'users',
+    'task_manager.users',
+
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,13 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
+
+ROLLBAR = {
+    'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
+    'environment': 'development' if DEBUG else 'production',
+    'code_version': '1.0',
+    'root': BASE_DIR,
+}
 
 ROOT_URLCONF = 'task_manager.urls'
 

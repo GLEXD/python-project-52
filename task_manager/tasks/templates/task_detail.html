@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Task Detail{% endblock %}
+
+{% block content %}
+<h1>Просмотр задачи</h1>
+<p><strong>Имя:</strong> {{ task.name }}</p>
+<p><strong>Описание:</strong> {{ task.description }}</p>
+<p><strong>Автор:</strong> {{ task.author.first_name }} {{ task.author.last_name }}</p>
+<p><strong>Исполнитель:</strong> {{ task.executor.first_name }} {{ task.executor.last_name }}</p>
+<p><strong>Статус:</strong> {{ task.status }}</p>
+<p><strong>Метки:</strong>
+  {% for label in task.labels.all %}
+    <span class="badge bg-secondary">{{ label.name }}</span>{% if not forloop.last %}, {% endif %}
+  {% empty %}
+    <em>Нет меток</em>
+  {% endfor %}
+</p>
+<p><strong>Дата создания:</strong> {{ task.created_at }}</p>
+<a href="{% url 'task_update' task.id %}" class="btn btn-warning">Изменить</a>
+<form action="{% url 'task_delete' task.id %}" method="post" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Удалить</button>
+</form>
+{% endblock %}
