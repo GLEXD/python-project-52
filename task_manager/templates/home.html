@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Главная{% endblock %}
+
 {% block content %}
-<div class="card">
-    <div class="card-body p-5 bg-white">
-        <div class="display-4 d-flex justify-content-center">Welcome to Task Manager</div>
-    </div>
+<div class="text-center py-5">
+    <h1 class="display-4 mb-3 text-primary">Добро пожаловать в Task Manager</h1>
+    <p class="lead text-muted">Простой и удобный способ управлять задачами, статусами и метками.</p>
+    {% if not user.is_authenticated %}
+        <div class="mt-4">
+            <a href="{% url 'login' %}" class="btn btn-success me-2">Войти</a>
+            <a href="{% url 'user_create' %}" class="btn btn-outline-primary">Регистрация</a>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}
