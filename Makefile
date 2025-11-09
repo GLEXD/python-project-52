@@ -20,7 +20,6 @@ build:
 	./build.sh
 
 test:
-	uv run python manage.py migrate --noinput
 	uv run pytest --ds=task_manager.settings --reuse-db
 
 coverage:

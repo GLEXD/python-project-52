@@ -1,6 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/GLEXD/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/GLEXD/python-project-52/actions)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=GLEXD_python-project-52&metric=coverage)](https://sonarcloud.io/summary/new_code?id=GLEXD_python-project-52)
+[![Python CI](https://github.com/GLEXD/python-project-52/actions/workflows/ci.yml/badge.svg)](https://github.com/GLEXD/python-project-52/actions/workflows/ci.yml)
 
 # Project was made for Hexlet by Gleb Burimov
 Task Manager is a task management system. It allows you to set tasks, assign performers, and change their statuses.
