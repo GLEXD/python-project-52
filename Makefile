@@ -16,6 +16,9 @@ start:
 render-start:
 	gunicorn task_manager.wsgi
 
+run:
+	uv run python manage.py runserver
+
 lint:
 	uv run ruff check
 
