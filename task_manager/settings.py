@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import rollbar
+import rollbar.contrib.django.middleware as rollbar_django
+from django.conf import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -63,10 +66,10 @@ MIDDLEWARE = [
 
 ROLLBAR = {
     'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
-    'environment': 'development' if DEBUG else 'production',
-    'code_version': '1.0',
+    'environment': os.getenv('ROLLBAR_ENVIRONMENT', 'development'),
     'root': BASE_DIR,
 }
+
 
 ROOT_URLCONF = 'task_manager.urls'
 
@@ -140,3 +143,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+if ROLLBAR['access_token']:
+    rollbar.init(**ROLLBAR)

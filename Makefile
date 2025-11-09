@@ -4,11 +4,11 @@ install:
 migrate:
 	python manage.py migrate
 
+build:
+	./build.sh
+
 collectstatic:
 	python manage.py collectstatic --noinput
-
-lint:
-	uv run ruff check
 
 start:
 	python manage.py runserver 0.0.0.0:8000
@@ -16,8 +16,8 @@ start:
 render-start:
 	gunicorn task_manager.wsgi
 
-build:
-	./build.sh
+lint:
+	uv run ruff check
 
 test:
 	uv run pytest --ds=task_manager.settings --reuse-db

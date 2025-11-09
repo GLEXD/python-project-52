@@ -26,6 +26,8 @@ services:
       - DEBUG=1
       - DJANGO_SETTINGS_MODULE=task_manager.settings
       - DATABASE_URL=postgres://manager_user:123@db:5432/task_manager
+      - ROLLBAR_ACCESS_TOKEN=${ROLLBAR_ACCESS_TOKEN}
+      - ROLLBAR_ENVIRONMENT=production
 
 volumes:
   postgres_data:
