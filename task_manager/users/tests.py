@@ -1,8 +1,10 @@
+import pytest
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
 
 
+@pytest.mark.django_db
 class UserCRUDTests(TestCase):
     def setUp(self):
         self.client = Client()

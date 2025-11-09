@@ -1,3 +1,4 @@
+import pytest
 from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.urls import reverse
@@ -5,6 +6,7 @@ from django.urls import reverse
 from .models import Status
 
 
+@pytest.mark.django_db
 class StatusCRUDTests(TestCase):
     def setUp(self):
         self.client = Client()
