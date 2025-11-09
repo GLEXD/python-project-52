@@ -5,12 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import (
-    CreateView,
-    DeleteView,
-    ListView,
-    UpdateView
-)
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
 from task_manager.tasks.models import Task
 

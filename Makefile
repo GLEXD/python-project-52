@@ -7,6 +7,9 @@ migrate:
 collectstatic:
 	python manage.py collectstatic --noinput
 
+lint:
+	uv run ruff check
+
 start:
 	python manage.py runserver 0.0.0.0:8000
 
