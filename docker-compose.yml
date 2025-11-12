@@ -15,11 +15,11 @@ services:
   web:
     build: .
     container_name: task_manager_web
-
-    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: uv run sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
 
     volumes:
       - .:/app
+      - /app/.venv
     ports:
       - "8000:8000"
     depends_on:
