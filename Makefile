@@ -1,6 +1,9 @@
 install:
 	uv sync
 
+dev-group-install:
+	uv sync --group dev
+
 migrate:
 	python manage.py migrate
 
@@ -11,13 +14,10 @@ collectstatic:
 	python manage.py collectstatic --noinput
 
 start:
-	python manage.py runserver 0.0.0.0:8000
+	uv run python manage.py runserver
 
 render-start:
-	gunicorn task_manager.wsgi
-
-run:
-	uv run python manage.py runserver
+	uv run gunicorn task_manager.wsgi
 
 lint:
 	uv run ruff check
