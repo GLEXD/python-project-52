@@ -4,7 +4,7 @@ from .views import (
     StatusCreateView,
     StatusDeleteView,
     StatusListView,
-    StatusUpdateView
+    StatusUpdateView,
 )
 
 urlpatterns = [
