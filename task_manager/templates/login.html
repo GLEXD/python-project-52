@@ -12,9 +12,8 @@
         <form method="post" novalidate>
           {% csrf_token %}
 
-          <!-- Имя пользователя -->
           <div class="mb-3">
-            {{ form.username.label_tag }}
+            <label for="{{ form.username.id_for_label }}">Имя пользователя</label>
             {{ form.username }}
             {% if form.username.errors %}
               {% for error in form.username.errors %}
@@ -23,9 +22,8 @@
             {% endif %}
           </div>
 
-          <!-- Пароль -->
           <div class="mb-3">
-            {{ form.password.label_tag }}
+            <label for="{{ form.password.id_for_label }}">Пароль</label>
             {{ form.password }}
             {% if form.password.errors %}
               {% for error in form.password.errors %}
@@ -34,10 +32,10 @@
             {% endif %}
           </div>
 
-          <!-- Кнопка -->
           <div class="d-grid">
             <button type="submit" class="btn btn-primary">Войти</button>
           </div>
+
         </form>
 
       </div>
