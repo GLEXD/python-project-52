@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_DB: task_manager
       POSTGRES_USER: manager_user
-      POSTGRES_PASSWORD: 123
+      POSTGRES_PASSWORD: manager_pass
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -26,7 +26,6 @@ services:
     environment:
       - DEBUG=1
       - DJANGO_SETTINGS_MODULE=task_manager.settings
-      - DATABASE_URL=postgres://manager_user:123@db:5432/task_manager
       - ROLLBAR_ACCESS_TOKEN=${ROLLBAR_ACCESS_TOKEN}
       - ROLLBAR_ENVIRONMENT=production
 
