@@ -11,3 +11,5 @@ staticfiles/
 .DS_Store
 .idea
 db.sqlite3
+.coverage
+coverage.xml
